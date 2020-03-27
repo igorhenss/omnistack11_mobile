@@ -26,11 +26,11 @@ export default function Causes() {
       return;
     }
 
-    setLoading(true);
-
     if (amountOfCauses > 0 && causes.length === amountOfCauses) {
       return;
     }
+
+    setLoading(true);
 
     const response = await api.get('/causes', {
       params: { page }
@@ -70,7 +70,7 @@ export default function Causes() {
         keyExtractor={ cause => String(cause.id) }
         onEndReached={ loadCauses }
         onEndReachedThreshold={ 0.2 }
-        showsVerticalScrollIndicator={ true }
+        showsVerticalScrollIndicator={ false }
         renderItem={ ({ item: cause }) => (
           <View style={ styles.cause }>
             <Text style={ styles.causeProperty }>NGO:</Text>
